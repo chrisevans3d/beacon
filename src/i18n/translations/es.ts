@@ -23,6 +23,7 @@ export const es: Record<TranslationKey, string> = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'Panel',
   'nav.calendar': 'Calendario',
+  'cards.nextFiveDays.displayName': 'Next 5 Days',
   'nav.grounded': 'Grounded',
   'nav.chores': 'Tareas',
   'nav.grocery': 'Listas',

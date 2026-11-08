@@ -52,3 +52,34 @@ export function nightClouds(day: Date, hourly: WeatherForecast[], now: Date) {
   return { cloud: values.length ? Math.round(values.reduce((a, b) => a + b, 0) / values.length) : null,
     hours: values.length, complete };
 }
+
+/** Short clothing guidance for the at-a-glance dashboard. */
+export function compactClothingAdvice(day: WeatherForecast | undefined, unit: string): string {
+  if (!day) return 'Clothing outlook unavailable';
+  const low = celsius(day.templow, unit);
+  const high = celsius(day.temperature, unit);
+  let advice = low !== undefined && low <= 0 ? 'Coat, hat & gloves' :
+    high !== undefined && high < 10 ? 'Warm layers & coat' :
+    high !== undefined && high < 18 ? 'Long sleeves & jacket' :
+    high !== undefined && high >= 27 ? 'Light clothes & water' :
+    high !== undefined ? 'Light layers' : 'Clothing outlook unavailable';
+  if (low !== undefined && low > 0 && low < 10 && high !== undefined && high >= 18) advice += ' · Jacket early/late';
+  if ((day.precipitation_probability ?? 0) >= 40 || ['rainy', 'pouring', 'lightning-rainy', 'snowy-rainy'].includes(day.condition ?? '')) advice += ' · Raincoat';
+  if (day.condition === 'snowy') advice += ' · Winter boots';
+  return advice;
+}
+
+/** Retain missing cloud values as gaps in the hourly detail. */
+export function nightCloudHours(day: Date, hourly: WeatherForecast[], now: Date) {
+  const start = new Date(day); start.setHours(18, 0, 0, 0);
+  const end = new Date(day); end.setDate(end.getDate() + 1); end.setHours(6, 0, 0, 0);
+  const from = Math.max(start.getTime(), now.getTime());
+  const hours = new Map<number, number | null>();
+  for (const hour of hourly) {
+    const time = Date.parse(hour.datetime);
+    if (time < from || time >= +end || !Number.isFinite(time)) continue;
+    const cloud = hour.cloud_coverage;
+    hours.set(time, typeof cloud === 'number' && Number.isFinite(cloud) && cloud >= 0 && cloud <= 100 ? cloud : null);
+  }
+  return [...hours].sort(([a], [b]) => a - b).map(([time, cloud]) => ({ time: new Date(time), cloud }));
+}

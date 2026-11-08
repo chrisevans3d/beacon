@@ -23,6 +23,7 @@ export const nl: Record<TranslationKey, string> = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'Dashboard',
   'nav.calendar': 'Agenda',
+  'cards.nextFiveDays.displayName': 'Next 5 Days',
   'nav.grounded': 'Grounded',
   'nav.chores': 'Klusjes',
   'nav.grocery': "Lijsten",

@@ -1,3 +1,4 @@
+import { FiveDayCard } from './FiveDayCard';
 import { GroundedCard } from './GroundedCard';
 import { FamilyWeatherCard } from './FamilyWeatherCard';
 import { CardDefinition } from '../../types/dashboard-cards';
@@ -13,6 +14,15 @@ import { HaEntitiesListCard } from './HaEntitiesListCard';
 import { HaToggleCard } from './HaToggleCard';
 
 export const cardRegistry: Record<string, CardDefinition> = {
+  'next-five-days': {
+    type: 'next-five-days',
+    displayNameKey: 'cards.nextFiveDays.displayName',
+    icon: '🗓️',
+    component: FiveDayCard,
+    defaultConfig: {},
+    defaultSize: 'lg',
+    allowedRegions: ['main'],
+  },
   grounded: {
     type: 'grounded',
     displayNameKey: 'nav.grounded',

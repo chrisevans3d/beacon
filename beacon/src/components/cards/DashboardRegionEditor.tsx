@@ -73,7 +73,7 @@ export function DashboardRegionEditor({ region, cards, context, onChange, resiza
               key={card.id}
               card={card}
               context={context}
-              configurable={card.type.startsWith('ha-')}
+              configurable={(cardRegistry[card.type]?.configFields?.length ?? 0) > 0}
               resizable={resizable}
               sizeClassName={`dash-card--${card.size}`}
               onConfigure={() => setConfiguringId(card.id)}

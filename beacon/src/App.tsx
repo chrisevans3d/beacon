@@ -203,15 +203,16 @@ export function App() {
   // Day currently selected on the Dashboard's day view
   const [dashboardDate, setDashboardDate] = useState<Date>(() => startOfDay(new Date()));
 
-  // Helper: refetch events for a given week, with one extra day on either side
-  // so multi-day events that bleed in/out of the visible week still render.
+  // Fetch around the selected dashboard date so five-day cards and day
+  // navigation also work across week boundaries; calendar views use their week.
   const refetchEventsForWeek = useCallback(
     async (weekStart: Date) => {
-      const rangeStart = addDays(weekStart, -1);
-      const rangeEnd = addDays(weekStart, 8);
+      const anchor = activeView === 'dashboard' ? startOfDay(dashboardDate) : weekStart;
+      const rangeStart = addDays(anchor, -1);
+      const rangeEnd = addDays(anchor, 8);
       await fetchEvents(rangeStart.toISOString(), rangeEnd.toISOString());
     },
-    [fetchEvents],
+    [fetchEvents, activeView, dashboardDate],
   );
 
   // Event notifications (browser + HA mobile_app)

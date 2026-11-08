@@ -1,11 +1,22 @@
-.family-weather { height: 100%; overflow: auto; }
-.family-weather-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; }
-.family-weather-day { border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px; background: var(--bg-surface); }
-.family-weather-day h4 { margin: 0 0 12px; font-size: 1.1rem; }
-.family-weather-day h4 small { display: block; color: var(--text-secondary); font-weight: normal; }
-.family-weather-day p { margin: 8px 0; line-height: 1.45; }
-.family-weather-night { border-top: 1px solid var(--border-subtle); margin-top: 14px; padding-top: 12px; }
-.family-weather-night meter { width: 100%; height: 16px; }
-.family-weather-freeze { font-weight: 600; }
-.family-weather-best { color: var(--text-primary); }
-.family-weather-note { color: var(--text-secondary); font-size: .85rem; line-height: 1.5; }
+.family-weather { height: 100%; overflow: auto; font-family: inherit; }
+.family-weather-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; margin-bottom: 10px; }
+.family-weather-header h3 { margin: 0; font-size: 1.05rem; font-weight: 650; line-height: 1.3; }
+.family-weather-header small, .family-weather-day small { color: var(--text-secondary); font-size: .8rem; line-height: 1.4; }
+.family-weather-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 8px; }
+.family-weather-day { border: 1px solid var(--border-subtle); border-radius: 10px; padding: 12px; background: var(--bg-surface); }
+.family-weather-day h4 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0 0 8px; font-size: 1rem; }
+.family-weather-day h4 small { font-weight: normal; }
+.family-weather-condition { font-size: .9rem; margin-bottom: 8px; }
+.family-weather-day p { margin: 6px 0; line-height: 1.35; }
+.family-weather-temps { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 1.15rem; }
+.family-weather-clothes { font-size: .9rem; }
+.family-weather-night { border-top: 1px solid var(--border-subtle); margin-top: 10px; padding-top: 8px; font-size: .9rem; }
+.family-weather-sky { display: block; color: var(--text-secondary); font-size: .85rem; }
+.family-weather-freeze { font-weight: 700; }
+.family-weather-best { font-weight: 600; }
+.family-weather-note { color: var(--text-secondary); font-size: .8rem; line-height: 1.45; margin-top: 10px; }
+.family-weather-note summary, .family-weather-hourly summary { cursor: pointer; padding: 6px 0; }
+.family-weather-hourly { font-size: .8rem; margin-top: 4px; }
+.family-weather-hourly ul { list-style: none; padding: 0; margin: 4px 0; }
+.family-weather-hourly li { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--border-subtle); }
+.family-weather-missing { color: var(--text-secondary); }

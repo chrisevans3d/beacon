@@ -26,6 +26,13 @@ calendar, task and service actions can affect real household data.
 
 ### Features in this fork
 
+- **Next 5 Days**: horizontal agenda card in the main dashboard region, starting
+  on the selected dashboard date. Includes overnight and multi-day events;
+  narrow cards scroll horizontally rather than stacking the days vertically.
+- **Compact weather**: three-day highs/lows, short clothing tips, freeze flags,
+  and night sky icons with average cloud percentages. Expand **Hourly cloud
+  cover** for timestamped values; missing data and partial coverage are labeled.
+  The former green average-clarity meter has been removed.
 - **Grounded** in the sidebar: add, edit and restore per-child restrictions for
   iPad, PC gaming and Pouch time choosing, with distinct tablet/gamepad/TV icons.
   Set an optional local end time for automatic expiry, or restore manually.

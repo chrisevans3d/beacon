@@ -35,3 +35,19 @@ describe('night cloud forecast', () => {
     expect(nightClouds(day, hours, new Date(2026, 10, 8, 20))).toEqual({ cloud: 0, hours: 10, complete: true });
   });
 });
+
+import { compactClothingAdvice, nightCloudHours } from './weather-outlook';
+describe('compact weather details', () => {
+  it('does not repeat jacket advice and keeps cold mornings and precipitation visible', () => {
+    expect(compactClothingAdvice({ datetime: '', temperature: 64, templow: 44 }, '°F')).toBe('Long sleeves & jacket');
+    expect(compactClothingAdvice({ datetime: '', temperature: 69, templow: 44 }, '°F')).toBe('Light layers · Jacket early/late');
+    expect(compactClothingAdvice({ datetime: '', temperature: 45, templow: 28, precipitation_probability: 60 }, '°F')).toBe('Coat, hat & gloves · Raincoat');
+  });
+  it('sorts real overnight hourly values, preserves gaps, and filters out daytime', () => {
+    const day = new Date(2026, 10, 8, 12);
+    const hour = (h: number, cloud?: number) => ({ datetime: new Date(2026, 10, 8, h).toISOString(), cloud_coverage: cloud });
+    const hours = nightCloudHours(day, [hour(25, 60), hour(18, 0), hour(19), hour(12, 10), hour(30, 100)], day);
+    expect(hours.map(h => h.cloud)).toEqual([0, null, 60]);
+    expect(hours.map(h => h.time.getHours())).toEqual([18, 19, 1]);
+  });
+});

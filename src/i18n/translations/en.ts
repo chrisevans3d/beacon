@@ -27,6 +27,7 @@ export const en = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'Dashboard',
   'nav.calendar': 'Calendar',
+  'cards.nextFiveDays.displayName': 'Next 5 Days',
   'nav.grounded': 'Grounded',
   'nav.chores': 'Chores',
   'nav.grocery': 'Lists',
