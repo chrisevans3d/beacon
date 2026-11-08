@@ -27,6 +27,7 @@ export const en = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'Dashboard',
   'nav.calendar': 'Calendar',
+  'nav.grounded': 'Grounded',
   'nav.chores': 'Chores',
   'nav.grocery': 'Lists',
   'nav.tasks': 'Tasks',

@@ -23,6 +23,7 @@ export const ja: Record<TranslationKey, string> = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'ダッシュボード',
   'nav.calendar': 'カレンダー',
+  'nav.grounded': 'Grounded',
   'nav.chores': '家事',
   'nav.grocery': 'リスト',
   'nav.tasks': 'タスク',

@@ -23,6 +23,7 @@ export const nl: Record<TranslationKey, string> = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': 'Dashboard',
   'nav.calendar': 'Agenda',
+  'nav.grounded': 'Grounded',
   'nav.chores': 'Klusjes',
   'nav.grocery': "Lijsten",
   'nav.tasks': 'Taken',

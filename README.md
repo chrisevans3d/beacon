@@ -26,6 +26,15 @@ calendar, task and service actions can affect real household data.
 
 ### Features in this fork
 
+- **Grounded** in the sidebar: add, edit and restore per-child restrictions for
+  iPad, PC gaming and Pouch time choosing, with distinct tablet/gamepad/TV icons.
+  Set an optional local end time for automatic expiry, or restore manually.
+  Add the **Grounded** card through the Advanced Dashboard card picker to show
+  active restrictions. Existing parent PINs lock editing for two minutes per
+  unlock; without a configured parent PIN, editing is available. This is a UI
+  lock, not server authorization or actual device blocking. Add-on records are
+  saved centrally, with other open displays refreshed every 15 seconds. Avoid
+  simultaneous edits from multiple displays (the shared store has no locking).
 - Display settings: optional scheduled screensaver, defaulting to midnight–7 AM
   in the device's local time. Touch to wake; idle timeout applies afterward.
 - Appearance → Advanced Dashboard → Edit Dashboard → Add card:

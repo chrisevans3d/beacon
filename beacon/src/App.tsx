@@ -1,3 +1,5 @@
+import { GroundedProvider } from './hooks/useGrounded';
+import { GroundedView } from './components/Grounded';
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { startOfWeek, startOfDay, addDays, format } from 'date-fns';
 import { useHomeAssistant } from './hooks/useHomeAssistant';
@@ -566,6 +568,7 @@ export function App() {
 
   return (
     <I18nContext.Provider value={i18n}>
+    <GroundedProvider members={members}>
     <div className={`beacon ${settings.kioskMode ? 'beacon--kiosk' : `beacon--sidebar-${sidebarPos}`} ${isIngress ? 'beacon--ingress' : ''} ${compact ? 'beacon--compact' : ''}`}>
       {focusInvalid && (
         <div className="focus-invalid-banner">
@@ -614,6 +617,8 @@ export function App() {
               sidebarPosition={sidebarPos}
             />
           </>
+        ) : activeView === 'grounded' ? (
+          <GroundedView />
         ) : activeView === 'chores' ? (
           settings.choresEnabled ? (
             <ChoresView />
@@ -792,6 +797,7 @@ export function App() {
         <div className="demo-badge">{t('app.demoMode')}</div>
       )}
     </div>
+    </GroundedProvider>
     </I18nContext.Provider>
   );
 }

@@ -1,3 +1,4 @@
+import { GroundedCard } from './GroundedCard';
 import { FamilyWeatherCard } from './FamilyWeatherCard';
 import { CardDefinition } from '../../types/dashboard-cards';
 import { ClockWeatherCard } from './ClockWeatherCard';
@@ -12,6 +13,15 @@ import { HaEntitiesListCard } from './HaEntitiesListCard';
 import { HaToggleCard } from './HaToggleCard';
 
 export const cardRegistry: Record<string, CardDefinition> = {
+  grounded: {
+    type: 'grounded',
+    displayNameKey: 'nav.grounded',
+    icon: '🚫',
+    component: GroundedCard,
+    defaultConfig: {},
+    defaultSize: 'md',
+    allowedRegions: ['main', 'sidebar'],
+  },
   'family-weather': {
     type: 'family-weather',
     displayNameKey: 'cards.familyWeather.displayName',

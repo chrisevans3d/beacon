@@ -1,0 +1,15 @@
+.grounded-view { padding: 24px; overflow: auto; width: 100%; max-width: 1100px; margin: 0 auto; }
+.grounded-view h1 { margin-bottom: 8px; }
+.grounded-summary { overflow: auto; }
+.grounded-summary h3 { display: flex; align-items: center; gap: 8px; }
+.grounded-restriction { display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap; }
+.grounded-detail { flex: 1; min-width: 160px; }
+.grounded-form { margin: 24px 0; padding: 20px; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-surface); display: grid; gap: 16px; }
+.grounded-form label { display: flex; gap: 8px; flex-direction: column; }
+.grounded-form input:not([type=radio]), .grounded-form select { padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-surface); color: var(--text-primary); font: inherit; min-width: 0; }
+.grounded-form fieldset { padding: 12px; border: 1px solid var(--border-subtle); border-radius: 8px; min-width: 0; }
+.grounded-privileges { display: flex; flex-wrap: wrap; gap: 12px; }
+.grounded-form .grounded-choice { flex-direction: row; align-items: center; border: 1px solid var(--border); border-radius: 8px; padding: 12px; cursor: pointer; min-height: 48px; }
+.grounded-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.grounded-actions .btn { min-height: 44px; }
+.grounded-note, .grounded-restriction small { color: var(--text-secondary); line-height: 1.5; }

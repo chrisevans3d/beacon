@@ -1,5 +1,5 @@
 name: Beacon Lab
-version: "1.40.1"
+version: "1.40.2"
 slug: beacon_lab
 description: "Experimental family dashboard with weather, night-sky outlooks and scheduled screensavers"
 url: "https://github.com/chrisevans3d/beacon"
