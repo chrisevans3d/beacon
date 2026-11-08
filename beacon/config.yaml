@@ -1,19 +1,18 @@
-name: Beacon
-version: "1.40.0"
-slug: beacon
-description: "Family command center for wall-mounted displays"
-url: "https://github.com/asachs01/beacon"
+name: Beacon Lab
+version: "1.40.1"
+slug: beacon_lab
+description: "Experimental family dashboard with weather, night-sky outlooks and scheduled screensavers"
+url: "https://github.com/chrisevans3d/beacon"
 arch:
   - amd64
   - aarch64
-  - armv7
 init: false
 startup: application
 boot: auto
 ingress: true
 ingress_port: 3000
 panel_icon: mdi:calendar-clock
-panel_title: Beacon
+panel_title: Beacon Lab
 homeassistant_api: true
 auth_api: true
 options:

@@ -780,6 +780,9 @@ export function App() {
       {/* Screen saver / dim mode */}
       <ScreenSaver
         enabled={settings.screenSaverEnabled}
+        scheduleEnabled={settings.screenSaverScheduleEnabled}
+        scheduleStart={settings.screenSaverStart}
+        scheduleEnd={settings.screenSaverEnd}
         dimTimeoutMin={settings.dimTimeout}
         screenSaverTimeoutMin={settings.screenSaverTimeout}
       />

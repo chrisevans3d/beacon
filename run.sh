@@ -30,6 +30,11 @@ HA_BROWSER_TOKEN=""
 
 # Generate runtime-config.js using node for proper JSON escaping (prevents injection)
 CONFIG_JS="/app/dist/runtime-config.js"
+HA_URL="${HA_URL}" HA_BROWSER_TOKEN="${HA_BROWSER_TOKEN}" FAMILY_NAME="${FAMILY_NAME}" \
+  SAVE_CONFIG_IN_BROWSER="${SAVE_CONFIG_IN_BROWSER}" \
+  THEME="${THEME}" AUTO_DARK_MODE="${AUTO_DARK_MODE}" WEATHER_ENTITY="${WEATHER_ENTITY}" \
+  PHOTO_DIRECTORY="${PHOTO_DIRECTORY}" PHOTO_INTERVAL="${PHOTO_INTERVAL}" \
+  SCREEN_SAVER_TIMEOUT="${SCREEN_SAVER_TIMEOUT}" \
 node -e "
   const config = {
     ha_url: process.env.HA_URL || '',
@@ -47,31 +52,16 @@ node -e "
     '${CONFIG_JS}',
     'window.__BEACON_CONFIG__ = ' + JSON.stringify(config) + ';'
   );
-" HA_URL="${HA_URL}" HA_BROWSER_TOKEN="${HA_BROWSER_TOKEN}" FAMILY_NAME="${FAMILY_NAME}" \
-  SAVE_CONFIG_IN_BROWSER="${SAVE_CONFIG_IN_BROWSER}" \
-  THEME="${THEME}" AUTO_DARK_MODE="${AUTO_DARK_MODE}" WEATHER_ENTITY="${WEATHER_ENTITY}" \
-  PHOTO_DIRECTORY="${PHOTO_DIRECTORY}" PHOTO_INTERVAL="${PHOTO_INTERVAL}" \
-  SCREEN_SAVER_TIMEOUT="${SCREEN_SAVER_TIMEOUT}"
-
+"
 # Inject the runtime-config script tag into index.html if not already present
 INDEX_HTML="/app/dist/index.html"
 if ! grep -q 'runtime-config.js' "${INDEX_HTML}"; then
   sed -i 's|</head>|<script src="./runtime-config.js"></script></head>|' "${INDEX_HTML}"
 fi
 
-# Install Beacon voice intents into HA config (idempotent)
-VOICE_SENTENCES_SRC="/app/custom_sentences/en/beacon.yaml"
-VOICE_INTENTS_SRC="/app/custom_intents/beacon.yaml"
-if [ -f "${VOICE_SENTENCES_SRC}" ]; then
-  mkdir -p /config/custom_sentences/en
-  cp "${VOICE_SENTENCES_SRC}" /config/custom_sentences/en/beacon.yaml
-  bashio::log.info "Installed Beacon voice sentences to /config/custom_sentences/en/"
-fi
-if [ -f "${VOICE_INTENTS_SRC}" ]; then
-  mkdir -p /config/custom_intents
-  cp "${VOICE_INTENTS_SRC}" /config/custom_intents/beacon.yaml
-  bashio::log.info "Installed Beacon voice intents to /config/custom_intents/"
-fi
+# Beacon Lab runs alongside the upstream add-on. Never overwrite its shared
+# /config/custom_sentences or /config/custom_intents files during startup.
+# Voice integration can be configured explicitly after testing the fork.
 
-bashio::log.info "Starting Beacon server on port 3000 (API proxy enabled)..."
+bashio::log.info "Starting Beacon Lab server on port 3000 (API proxy enabled)..."
 exec node /app/server.js

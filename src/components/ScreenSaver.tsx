@@ -7,12 +7,18 @@ type Phase = 'awake' | 'dim' | 'screensaver';
 
 interface ScreenSaverProps {
   enabled?: boolean;
+  scheduleEnabled?: boolean;
+  scheduleStart?: string;
+  scheduleEnd?: string;
   dimTimeoutMin?: number;
   screenSaverTimeoutMin?: number;
 }
 
 export function ScreenSaver({
   enabled = true,
+  scheduleEnabled = false,
+  scheduleStart = '00:00',
+  scheduleEnd = '07:00',
   dimTimeoutMin = 5,
   screenSaverTimeoutMin = 10,
 }: ScreenSaverProps) {
@@ -38,14 +44,40 @@ export function ScreenSaver({
     };
   }, [wake]);
 
-  // Idle timer — check every 10 seconds
+  // Check local schedule boundaries even when there is no user activity
   useEffect(() => {
     if (!enabled) {
       setPhase('awake');
       return;
     }
 
+    let wasInWindow = false;
     const check = () => {
+      if (scheduleEnabled) {
+        const minutes = (value: string) => {
+          if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(value)) return NaN;
+          const [hours, mins] = value.split(':').map(Number);
+          return hours * 60 + mins;
+        };
+        const date = new Date();
+        const current = date.getHours() * 60 + date.getMinutes();
+        const start = minutes(scheduleStart);
+        const end = minutes(scheduleEnd);
+        const inWindow = Number.isFinite(start) && Number.isFinite(end) && start !== end &&
+          (start < end ? current >= start && current < end : current >= start || current < end);
+        const entering = inWindow && !wasInWindow;
+        wasInWindow = inWindow;
+        if (!inWindow) {
+          setPhase('awake');
+          lastActivityRef.current = Date.now();
+          return;
+        }
+        if (entering) {
+          setNow(date);
+          setPhase('screensaver');
+          return;
+        }
+      }
       const idle = Date.now() - lastActivityRef.current;
       if (idle >= screenSaverAfterMs) {
         setPhase('screensaver');
@@ -54,9 +86,10 @@ export function ScreenSaver({
       }
     };
 
-    const interval = setInterval(check, 10_000);
+    check();
+    const interval = setInterval(check, 1000);
     return () => clearInterval(interval);
-  }, [enabled, dimAfterMs, screenSaverAfterMs]);
+  }, [enabled, dimAfterMs, screenSaverAfterMs, scheduleEnabled, scheduleStart, scheduleEnd]);
 
   // Clock tick for screensaver
   useEffect(() => {

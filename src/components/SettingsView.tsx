@@ -1550,6 +1550,28 @@ export function SettingsView({
           <>
             <div className="settings-row">
               <div>
+                <div className="settings-row-label">{t('settings.display.scheduleLabel')}</div>
+                <div className="settings-row-sublabel">{t('settings.display.scheduleDescription')}</div>
+              </div>
+              <Toggle checked={settings.screenSaverScheduleEnabled}
+                onChange={(v) => onUpdateSettings({ screenSaverScheduleEnabled: v })} />
+            </div>
+            {settings.screenSaverScheduleEnabled && <>
+              <div className="settings-row">
+                <label htmlFor="screensaver-start">{t('settings.display.scheduleStart')}</label>
+                <input id="screensaver-start" type="time" className="settings-input"
+                  value={settings.screenSaverStart}
+                  onChange={(e) => { if (e.target.value) onUpdateSettings({ screenSaverStart: e.target.value }); }} />
+              </div>
+              <div className="settings-row">
+                <label htmlFor="screensaver-end">{t('settings.display.scheduleEnd')}</label>
+                <input id="screensaver-end" type="time" className="settings-input"
+                  value={settings.screenSaverEnd}
+                  onChange={(e) => { if (e.target.value) onUpdateSettings({ screenSaverEnd: e.target.value }); }} />
+              </div>
+            </>}
+            <div className="settings-row">
+              <div>
                 <div className="settings-row-label">{t('settings.display.dimAfterLabel')}</div>
                 <div className="settings-row-sublabel">{t('settings.display.dimAfterSublabel')}</div>
               </div>

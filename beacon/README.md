@@ -1,3 +1,55 @@
+# Beacon Lab
+
+A development fork of [Beacon](https://github.com/asachs01/beacon), maintained at
+[chrisevans3d/beacon](https://github.com/chrisevans3d/beacon).
+
+## Install alongside the original in Home Assistant
+
+1. Back up the original Beacon add-on and the touchscreen browser profile.
+2. In Settings → Apps/Add-ons → Store → ⋮ → Repositories, add
+   `https://github.com/chrisevans3d/beacon`.
+3. Refresh the store, select **Beacon Lab**, and install. Home Assistant builds
+   the add-on locally from `beacon/`; no published GHCR image is required.
+4. Start it, inspect its logs, and choose **Open Web UI**. Keep the original
+   Beacon installed until the fork has been tested.
+5. Configure and test the fork before changing the touchscreen kiosk URL.
+
+Beacon Lab has its own `beacon_lab` slug, sidebar label, ingress route and
+add-on data directory. Both instances use container port 3000 without a host
+port conflict. Supported targets are amd64 and aarch64; 32-bit armv7 is not
+advertised because the Node 24 build image does not support it.
+
+The fork does not automatically install upstream voice files into Home
+Assistant's shared configuration. Settings and browser-local data do not
+migrate automatically. Both instances still access the same HA entities, so
+calendar, task and service actions can affect real household data.
+
+### Features in this fork
+
+- Display settings: optional scheduled screensaver, defaulting to midnight–7 AM
+  in the device's local time. Touch to wake; idle timeout applies afterward.
+- Appearance → Advanced Dashboard → Edit Dashboard → Add card:
+  **Family Weather & Night Sky**, with three-day clothing advice, freezing
+  temperature flags and hourly cloud outlooks for three nights. Availability
+  depends on the HA weather provider. The 6 PM–6 AM planning window is not a
+  calculation of astronomical darkness.
+
+### Development and updates
+
+Work in the existing checkout: `npm ci`, `npm test -- --maxWorkers=4`,
+`npm run build`, and `npm run dev`. Source changes must also be mirrored into
+`beacon/src/`; check with `bash scripts/check-beacon-sync.sh`.
+
+For a new installable release, keep both config.yaml versions equal and bump
+that version, push the changes to the repository's default branch, then refresh
+Home Assistant's store and update Beacon Lab. Fork Actions must be enabled if
+using the automated release workflow. Optional container publishing targets
+`ghcr.io/chrisevans3d/beacon-lab`; installation does not depend on it.
+
+---
+
+## Upstream documentation
+
 
 
 <p align="center">

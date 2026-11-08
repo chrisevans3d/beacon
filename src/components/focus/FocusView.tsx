@@ -163,6 +163,9 @@ export function FocusView({ memberId, settings, onExit }: FocusViewProps) {
 
       <ScreenSaver
         enabled={settings.screenSaverEnabled}
+        scheduleEnabled={settings.screenSaverScheduleEnabled}
+        scheduleStart={settings.screenSaverStart}
+        scheduleEnd={settings.screenSaverEnd}
         dimTimeoutMin={settings.dimTimeout}
         screenSaverTimeoutMin={settings.screenSaverTimeout}
       />

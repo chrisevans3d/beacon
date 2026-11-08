@@ -1,3 +1,4 @@
+import { en as scheduleFallback } from './en';
 import type { TranslationKey } from './en';
 
 export const es: Record<TranslationKey, string> = {
@@ -309,6 +310,10 @@ export const es: Record<TranslationKey, string> = {
   // ---- settings: display ----
   'settings.display.title': 'Pantalla',
   'settings.display.desc': 'Salvapantallas, brillo y ajustes de modo kiosco.',
+  'settings.display.scheduleLabel': scheduleFallback['settings.display.scheduleLabel'],
+  'settings.display.scheduleDescription': scheduleFallback['settings.display.scheduleDescription'],
+  'settings.display.scheduleStart': scheduleFallback['settings.display.scheduleStart'],
+  'settings.display.scheduleEnd': scheduleFallback['settings.display.scheduleEnd'],
   'settings.display.screenSaverLabel': 'Salvapantallas',
   'settings.display.screenSaverSublabel': 'Muestra un reloj flotante tras un periodo inactivo',
   'settings.display.dimAfterLabel': 'Atenuar después de',
@@ -368,6 +373,7 @@ export const es: Record<TranslationKey, string> = {
   'cards.common.entitiesLabel': 'Entidades',
   'cards.common.titleLabel': 'Título',
   'cards.common.subtitleLabel': 'Subtítulo',
+  'cards.familyWeather.displayName': 'Family Weather & Night Sky',
   'cards.clockWeather.displayName': 'Reloj y Clima',
   'cards.familyCalendar.displayName': 'Calendario Familiar',
   'cards.familyCalendar.showOtherLabel': 'Mostrar otros',

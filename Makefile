@@ -1,6 +1,6 @@
 .PHONY: dev build lint typecheck docker-build docker-push clean cap-sync cap-ios cap-android
 
-IMAGE := ghcr.io/asachs01/beacon
+IMAGE := ghcr.io/chrisevans3d/beacon-lab
 TAG   := $(shell grep '^version:' config.yaml | sed 's/version: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/')
 
 ## Development server
@@ -31,7 +31,7 @@ docker-build:
 ## Push Docker image to GHCR
 docker-push:
 	docker buildx build \
-		--platform linux/amd64,linux/arm64,linux/arm/v7 \
+		--platform linux/amd64,linux/arm64 \
 		--tag $(IMAGE):$(TAG) \
 		--tag $(IMAGE):latest \
 		--push \

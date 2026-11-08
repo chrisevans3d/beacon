@@ -1,3 +1,4 @@
+import { en as scheduleFallback } from './en';
 import type { TranslationKey } from './en';
 
 export const ja: Record<TranslationKey, string> = {
@@ -309,6 +310,10 @@ export const ja: Record<TranslationKey, string> = {
   // ---- settings: display ----
   'settings.display.title': 'ディスプレイ',
   'settings.display.desc': 'スクリーンセーバー、明るさ、キオスクモードの設定です。',
+  'settings.display.scheduleLabel': scheduleFallback['settings.display.scheduleLabel'],
+  'settings.display.scheduleDescription': scheduleFallback['settings.display.scheduleDescription'],
+  'settings.display.scheduleStart': scheduleFallback['settings.display.scheduleStart'],
+  'settings.display.scheduleEnd': scheduleFallback['settings.display.scheduleEnd'],
   'settings.display.screenSaverLabel': 'スクリーンセーバー',
   'settings.display.screenSaverSublabel': '操作がない場合、フローティング時計を表示します',
   'settings.display.dimAfterLabel': '減光までの時間',
@@ -368,6 +373,7 @@ export const ja: Record<TranslationKey, string> = {
   'cards.common.entitiesLabel': 'エンティティ',
   'cards.common.titleLabel': 'タイトル',
   'cards.common.subtitleLabel': 'サブタイトル',
+  'cards.familyWeather.displayName': 'Family Weather & Night Sky',
   'cards.clockWeather.displayName': '時計と天気',
   'cards.familyCalendar.displayName': '家族カレンダー',
   'cards.familyCalendar.showOtherLabel': 'その他を表示',

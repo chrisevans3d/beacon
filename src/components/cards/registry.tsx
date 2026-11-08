@@ -1,3 +1,4 @@
+import { FamilyWeatherCard } from './FamilyWeatherCard';
 import { CardDefinition } from '../../types/dashboard-cards';
 import { ClockWeatherCard } from './ClockWeatherCard';
 import { FamilyCalendarCard } from './FamilyCalendarCard';
@@ -11,6 +12,16 @@ import { HaEntitiesListCard } from './HaEntitiesListCard';
 import { HaToggleCard } from './HaToggleCard';
 
 export const cardRegistry: Record<string, CardDefinition> = {
+  'family-weather': {
+    type: 'family-weather',
+    displayNameKey: 'cards.familyWeather.displayName',
+    icon: '🌤️',
+    component: FamilyWeatherCard,
+    defaultConfig: { entity_id: '' },
+    defaultSize: 'lg',
+    allowedRegions: ['main', 'sidebar'],
+    configFields: [{ type: 'entity', key: 'entity_id', labelKey: 'cards.common.entityLabel' }],
+  },
   'clock-weather': {
     type: 'clock-weather',
     displayNameKey: 'cards.clockWeather.displayName',

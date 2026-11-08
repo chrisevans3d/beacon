@@ -1,3 +1,4 @@
+import { en as scheduleFallback } from './en';
 import type { TranslationKey } from './en';
 
 export const ko: Record<TranslationKey, string> = {
@@ -309,6 +310,10 @@ export const ko: Record<TranslationKey, string> = {
   // ---- settings: display ----
   'settings.display.title': '디스플레이',
   'settings.display.desc': '화면 보호기, 밝기, 키오스크 모드 설정입니다.',
+  'settings.display.scheduleLabel': scheduleFallback['settings.display.scheduleLabel'],
+  'settings.display.scheduleDescription': scheduleFallback['settings.display.scheduleDescription'],
+  'settings.display.scheduleStart': scheduleFallback['settings.display.scheduleStart'],
+  'settings.display.scheduleEnd': scheduleFallback['settings.display.scheduleEnd'],
   'settings.display.screenSaverLabel': '화면 보호기',
   'settings.display.screenSaverSublabel': '유휴 상태가 되면 떠다니는 시계를 표시합니다',
   'settings.display.dimAfterLabel': '어둡게 하기까지',
@@ -368,6 +373,7 @@ export const ko: Record<TranslationKey, string> = {
   'cards.common.entitiesLabel': '엔티티',
   'cards.common.titleLabel': '제목',
   'cards.common.subtitleLabel': '부제목',
+  'cards.familyWeather.displayName': 'Family Weather & Night Sky',
   'cards.clockWeather.displayName': '시계 및 날씨',
   'cards.familyCalendar.displayName': '가족 캘린더',
   'cards.familyCalendar.showOtherLabel': '기타 표시',

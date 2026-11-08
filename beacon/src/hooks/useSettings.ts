@@ -48,6 +48,9 @@ export interface BeaconSettings {
 
   // Display
   screenSaverEnabled: boolean;
+  screenSaverScheduleEnabled: boolean;
+  screenSaverStart: string;
+  screenSaverEnd: string;
   dimTimeout: number;       // minutes
   screenSaverTimeout: number; // minutes
   alwaysOnDisplay: boolean;
@@ -107,6 +110,9 @@ function buildDefaults(): BeaconSettings {
     advancedDashboard: false,
 
     screenSaverEnabled: true,
+    screenSaverScheduleEnabled: false,
+    screenSaverStart: '00:00',
+    screenSaverEnd: '07:00',
     dimTimeout: 5,
     screenSaverTimeout: config.screen_saver_timeout,
     alwaysOnDisplay: false,

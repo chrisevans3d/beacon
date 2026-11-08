@@ -1,0 +1,11 @@
+.git
+node_modules
+dist
+beacon
+docs
+docs-site
+ios
+android
+.env
+.env.*
+*.log

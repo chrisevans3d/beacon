@@ -314,6 +314,10 @@ export const en = {
   // ---- settings: display ----
   'settings.display.title': 'Display',
   'settings.display.desc': 'Screen saver, brightness, and kiosk settings.',
+  'settings.display.scheduleLabel': 'Screensaver schedule',
+  'settings.display.scheduleDescription': 'Starts immediately at the start time and stays off outside these hours. Touch to wake; the idle timeout then applies. Uses this device’s local time. Matching times disable the window.',
+  'settings.display.scheduleStart': 'Start time',
+  'settings.display.scheduleEnd': 'End time',
   'settings.display.screenSaverLabel': 'Screen Saver',
   'settings.display.screenSaverSublabel': 'Shows a floating clock after idle',
   'settings.display.dimAfterLabel': 'Dim After',
@@ -374,6 +378,7 @@ export const en = {
   'cards.common.entitiesLabel': 'Entities',
   'cards.common.titleLabel': 'Title',
   'cards.common.subtitleLabel': 'Subtitle',
+  'cards.familyWeather.displayName': 'Family Weather & Night Sky',
   'cards.clockWeather.displayName': 'Clock & Weather',
   'cards.familyCalendar.displayName': 'Family Calendar',
   'cards.familyCalendar.showOtherLabel': 'Show Other',
