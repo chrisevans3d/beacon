@@ -1,3 +1,4 @@
+import { WeatherHeaderCard } from './WeatherHeaderCard';
 import { FiveDayCard } from './FiveDayCard';
 import { GroundedCard } from './GroundedCard';
 import { FamilyWeatherCard } from './FamilyWeatherCard';
@@ -14,6 +15,16 @@ import { HaEntitiesListCard } from './HaEntitiesListCard';
 import { HaToggleCard } from './HaToggleCard';
 
 export const cardRegistry: Record<string, CardDefinition> = {
+  'weather-night-header': {
+    type: 'weather-night-header',
+    displayNameKey: 'cards.weatherHeader.displayName',
+    icon: '🌙',
+    component: WeatherHeaderCard,
+    defaultConfig: { entity_id: '' },
+    defaultSize: 'sm',
+    allowedRegions: ['topbar'],
+    configFields: [{ type: 'entity', key: 'entity_id', labelKey: 'cards.common.entityLabel' }],
+  },
   'next-five-days': {
     type: 'next-five-days',
     displayNameKey: 'cards.nextFiveDays.displayName',

@@ -1,0 +1,17 @@
+.weather-header-card { display: flex; align-items: center; justify-content: safe flex-end; gap: 16px; width: 100%; height: 100%; min-height: 62px; margin-left: auto; overflow-x: auto; color: var(--text-primary); }
+.weather-header-card > p { margin: 0; font-size: .9rem; }
+.weather-header-current { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+.weather-header-current > strong { font-size: 1.2rem; line-height: 1.2; }
+.weather-header-current > span { color: var(--text-secondary); font-size: .75rem; }
+.weather-header-nights { display: flex; gap: 12px; margin: 0; padding: 0; list-style: none; flex-shrink: 0; }
+.weather-header-night { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 62px; padding-left: 12px; border-left: 1px solid var(--border-subtle); }
+.weather-header-night-label { font-size: .8rem; font-weight: 600; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.weather-header-night > strong { font-size: 1rem; white-space: nowrap; }
+.weather-header-night small { color: var(--text-secondary); font-size: .7rem; }
+.weather-header-unavailable { color: var(--text-secondary); font-size: .75rem; }
+.weather-header-freeze { font-size: .7rem; }
+@media (max-width: 600px) {
+  .weather-header-card { justify-content: flex-start; gap: 10px; }
+  .weather-header-nights { gap: 8px; }
+  .weather-header-night { padding-left: 8px; }
+}

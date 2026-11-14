@@ -26,6 +26,13 @@ calendar, task and service actions can affect real household data.
 
 ### Features in this fork
 
+- **Weather & Night Sky — Header**: add from the header region's **Add Card**
+  picker for a shallow, right-aligned current-temperature and three-night sky
+  strip. It shows average cloud percentages, missing/partial forecast labels,
+  and freeze warnings. Resize the existing clock card to the left half of the
+  header and drag this card into the right half. Existing dashboard placements
+  are preserved. The full Family Weather & Night Sky card remains available in
+  the main region/sidebar, including its hourly details.
 - **Next 5 Days**: horizontal agenda card in the main dashboard region, starting
   on the selected dashboard date. Includes overnight and multi-day events;
   narrow cards scroll horizontally rather than stacking the days vertically.

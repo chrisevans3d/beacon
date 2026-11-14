@@ -23,6 +23,7 @@ export const ko: Record<TranslationKey, string> = {
   // ---- nav (Sidebar) ----
   'nav.dashboard': '대시보드',
   'nav.calendar': '캘린더',
+  'cards.weatherHeader.displayName': 'Weather & Night Sky — Header',
   'cards.nextFiveDays.displayName': 'Next 5 Days',
   'nav.grounded': 'Grounded',
   'nav.chores': '집안일',

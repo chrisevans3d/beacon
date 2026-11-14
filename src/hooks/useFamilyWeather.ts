@@ -6,6 +6,7 @@ import type { WeatherForecast } from '../utils/weather-outlook';
 interface Entity { entity_id: string; state: string; attributes: Record<string, unknown> }
 interface Outlook {
   daily: WeatherForecast[]; hourly: WeatherForecast[]; unit: string;
+  current?: { temperature: number; condition: string };
   loading: boolean; error: string | null; updated: Date | null;
 }
 export function useFamilyWeather(configuredEntity: string) {
@@ -39,6 +40,8 @@ export function useFamilyWeather(configuredEntity: string) {
         const [daily, hourly] = await Promise.allSettled([forecast('daily'), forecast('hourly')]);
         if (!cancelled) setData({ daily: daily.status === 'fulfilled' ? daily.value : [],
           hourly: hourly.status === 'fulfilled' ? hourly.value : [],
+          current: typeof entity.attributes.temperature === 'number' && Number.isFinite(entity.attributes.temperature)
+            ? { temperature: entity.attributes.temperature, condition: entity.state } : undefined,
           unit: typeof entity.attributes.temperature_unit === 'string' ? entity.attributes.temperature_unit : '',
           loading: false, error: daily.status === 'rejected' && hourly.status === 'rejected' ? 'This weather provider did not return daily or hourly forecasts.' : null,
           updated: new Date() });
