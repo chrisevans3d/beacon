@@ -1,0 +1,26 @@
+.night-sky-card { height: 100%; overflow: auto; padding: 8px; }
+.night-sky-title, .night-sky-night > header, .night-sky-target-title { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+.night-sky-title h3, .night-sky-night h4 { margin: 0; }
+.night-sky-title > span, .night-sky-muted, .night-sky-view, .night-sky-targets small, .night-sky-about { color: var(--text-secondary); font-size: .8rem; line-height: 1.45; }
+.night-sky-nights { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 10px; }
+.night-sky-night { padding: 12px; border: 1px solid var(--border-subtle); border-radius: 10px; background: var(--bg-surface); }
+.night-sky-night > header > span { font-size: .9rem; }
+.night-sky-night p { margin: 6px 0; line-height: 1.4; }
+.night-sky-targets { padding: 0; margin: 0; list-style: none; }
+.night-sky-targets li { padding: 12px 0; border-top: 1px solid var(--border-subtle); }
+.night-sky-target-title { align-items: start; }
+.night-sky-target-title strong { font-size: 1rem; }
+.night-sky-targets p { font-size: .85rem; }
+.night-sky-best { font-weight: 600; }
+.night-sky-about { margin-top: 12px; }
+.night-sky-about summary { cursor: pointer; padding: 6px 0; }
+.night-sky-header { display: flex; justify-content: safe flex-end; align-items: center; gap: 16px; height: 100%; min-height: 62px; overflow-x: auto; padding: 4px; }
+.night-sky-header > strong { white-space: nowrap; }
+.night-sky-header-clouds { white-space: nowrap; }
+.night-sky-header-target { display: flex; flex-direction: column; gap: 3px; min-width: 140px; }
+.night-sky-header-target > span { font-size: .8rem; color: var(--text-secondary); }
+
+.night-sky-hourly { font-size: .8rem; margin-top: 8px; }
+.night-sky-hourly summary { cursor: pointer; padding: 6px 0; }
+.night-sky-hourly ul { list-style: none; margin: 0; padding: 0; }
+.night-sky-hourly li { display: flex; justify-content: space-between; padding: 5px 0; border-top: 1px solid var(--border-subtle); }

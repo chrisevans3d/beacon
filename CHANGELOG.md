@@ -1,3 +1,14 @@
+# Beacon Lab 1.40.5 (2026-11-14)
+
+- Upgrade Family Weather & Night Sky and its header card to local astrophotography planning.
+- Detect Home Assistant location/time zone, with editable coordinates and porch bearings/elevations.
+- Suggest targets and approximate viewing windows/best times during astronomical darkness over the next 72 hours.
+- Include cloud forecasts, missing/partial coverage, Moon illumination/separation, and hourly details.
+- Use 26 curated OpenNGC deep-sky targets and local Jupiter/Saturn/Mars ephemerides.
+- Preserve the daytime weather card as Family Weather (three-day forecast).
+- Initial porch view: west through NNW (270°–340°), elevation 25°–90°; adjustable per card.
+- Validation: 151 tests, TypeScript and both web builds passed; production npm audit reported zero advisories.
+
 # [1.40.0](https://github.com/asachs01/beacon/compare/v1.39.6...v1.40.0) (2026-10-17)
 
 

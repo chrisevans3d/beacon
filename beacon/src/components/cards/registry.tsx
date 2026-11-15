@@ -1,3 +1,4 @@
+import { NightSkyCard } from './NightSkyCard';
 import { WeatherHeaderCard } from './WeatherHeaderCard';
 import { FiveDayCard } from './FiveDayCard';
 import { GroundedCard } from './GroundedCard';
@@ -14,16 +15,27 @@ import { HaEntityCard } from './HaEntityCard';
 import { HaEntitiesListCard } from './HaEntitiesListCard';
 import { HaToggleCard } from './HaToggleCard';
 
+const nightSkyDefaults = { entity_id: '', latitude: '', longitude: '', azimuth_start: '270', azimuth_end: '340', min_altitude: '25', max_altitude: '90' };
+const nightSkyFields: CardDefinition['configFields'] = [
+  { type: 'entity', key: 'entity_id', labelKey: 'cards.common.entityLabel' },
+  { type: 'text', key: 'latitude', labelKey: 'cards.nightSky.latitude' },
+  { type: 'text', key: 'longitude', labelKey: 'cards.nightSky.longitude' },
+  { type: 'text', key: 'azimuth_start', labelKey: 'cards.nightSky.azimuthStart' },
+  { type: 'text', key: 'azimuth_end', labelKey: 'cards.nightSky.azimuthEnd' },
+  { type: 'text', key: 'min_altitude', labelKey: 'cards.nightSky.minAltitude' },
+  { type: 'text', key: 'max_altitude', labelKey: 'cards.nightSky.maxAltitude' },
+];
+
 export const cardRegistry: Record<string, CardDefinition> = {
   'weather-night-header': {
     type: 'weather-night-header',
     displayNameKey: 'cards.weatherHeader.displayName',
     icon: '🌙',
     component: WeatherHeaderCard,
-    defaultConfig: { entity_id: '' },
+    defaultConfig: { ...nightSkyDefaults },
     defaultSize: 'sm',
     allowedRegions: ['topbar'],
-    configFields: [{ type: 'entity', key: 'entity_id', labelKey: 'cards.common.entityLabel' }],
+    configFields: nightSkyFields,
   },
   'next-five-days': {
     type: 'next-five-days',
@@ -43,15 +55,25 @@ export const cardRegistry: Record<string, CardDefinition> = {
     defaultSize: 'md',
     allowedRegions: ['main', 'sidebar'],
   },
-  'family-weather': {
-    type: 'family-weather',
-    displayNameKey: 'cards.familyWeather.displayName',
+  'family-weather-forecast': {
+    type: 'family-weather-forecast',
+    displayNameKey: 'cards.familyWeather.forecastName',
     icon: '🌤️',
     component: FamilyWeatherCard,
     defaultConfig: { entity_id: '' },
     defaultSize: 'lg',
     allowedRegions: ['main', 'sidebar'],
     configFields: [{ type: 'entity', key: 'entity_id', labelKey: 'cards.common.entityLabel' }],
+  },
+  'family-weather': {
+    type: 'family-weather',
+    displayNameKey: 'cards.familyWeather.displayName',
+    icon: '🌙',
+    component: NightSkyCard,
+    defaultConfig: { ...nightSkyDefaults },
+    defaultSize: 'lg',
+    allowedRegions: ['main', 'sidebar'],
+    configFields: nightSkyFields,
   },
   'clock-weather': {
     type: 'clock-weather',

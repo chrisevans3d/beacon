@@ -26,7 +26,27 @@ calendar, task and service actions can affect real household data.
 
 ### Features in this fork
 
-- **Weather & Night Sky — Header**: add from the header region's **Add Card**
+- **Night Sky (1.40.5)** upgrades existing Family Weather & Night Sky cards
+  and their compact header counterpart into local astrophotography planning.
+  Home Assistant supplies location and time zone. Gear settings allow manual
+  coordinates, porch compass range and elevation limits. The initial porch
+  view is west–NNW (270°–340°), above 25°, matching this household's request;
+  adjust for actual obstructions. Use 0°–360° for an unobstructed whole sky.
+- Night Sky considers 26 curated OpenNGC objects plus Jupiter, Saturn and Mars
+  over the next 72 hours. It samples astronomical darkness (Sun below −18°)
+  every 10 minutes, shows up to three suggestions per dark window with viewing
+  windows, best time, direction/elevation, Moon illumination and separation,
+  and cloud coverage. Unknown weather is labeled; known cloud cover over 70%
+  is excluded from target windows. Require at least a 30-minute target window.
+  Times use Home Assistant's time zone (device time zone for manual coordinates
+  when HA configuration is unavailable). All calculations are local; no API key
+  or location submission to an astronomy service is required. These are
+  approximate suggestions, not seeing/transparency forecasts or a guarantee.
+- The prior daytime forecast remains available as **Family Weather (three-day
+  forecast)**. Existing widget IDs/layouts are retained during upgrade. Data
+  attribution and licenses are in `THIRD_PARTY_NOTICES.md` and `LICENSES/`.
+
+- **Weather & Night Sky — Header (before 1.40.5)**: add from the header region's **Add Card**
   picker for a shallow, right-aligned current-temperature and three-night sky
   strip. It shows average cloud percentages, missing/partial forecast labels,
   and freeze warnings. Resize the existing clock card to the left half of the
